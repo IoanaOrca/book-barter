@@ -8,7 +8,8 @@ const bcryptSalt = 10;
 
 /* GET signup page. */
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+  const data = { errorMessage: req.flash('signup-error') };
+  res.render('auth/signup', data);
 });
 
 /* Post signup page. */
@@ -20,7 +21,6 @@ router.post('/signup', (req, res, next) => {
   User.findOne({ username: username })
     .then(result => {
       if (result) {
-        console.log('User already exists');
         req.flash('signup-error', 'User already exists');
         res.redirect('/auth/signup');
         return;
@@ -46,7 +46,8 @@ router.post('/signup', (req, res, next) => {
 
 /* GET login page. */
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  const data = { errorMessage: req.flash('login-error') };
+  res.render('auth/login', data);
 });
 
 /* POST login page. */

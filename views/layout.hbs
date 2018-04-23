@@ -6,10 +6,13 @@
   </head>
   <body class="container">
     {{#if user}}
-  
+    
+    <a href="/edit-profile">
+    <button>{{user.username}}</button>
+    </a>
     <form action="/auth/logout" method="post">
       <div class="field submit">
-        <button>{{user.username}}</button>
+       
         <button type="submit">LogOut</button>
       </div>
     </form>
@@ -19,5 +22,10 @@
     <a href="/auth/signup"> SignUp</a>
      {{/if}}
     {{{body}}}
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc">
+    </script>
+    <script src="/javascripts/main.js"></script>
   </body>
 </html>

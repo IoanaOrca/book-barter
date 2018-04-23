@@ -2,29 +2,34 @@
     <h1>Sign Up</h1>
     <form id="form" action="/auth/signup" method="POST">
 
+        <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="Email" />
+        </div>
 
         <div class="field">
             <label>Username</label>
-            <input type="text" name="username" />
+            <input type="text" name="username" required placeholder="Username" />
         </div>
 
         <div class="field">
             <label>Password</label>
-            <input type="password" name="password" />
+            <input type="password" name="password" required placeholder="Password" />
         </div>
 
         <div class="field submit">
+             {{#if errorMessage.length}}
+            <ul class="validation">
+                {{#each errorMessage}}
+                <li class="error-message">{{ this }}</li>
+                {{/each}}
+            </ul>
+            {{/if}}
             <button type="submit">Signup</button>
         </div>
         <a href="/auth/login"> Log In</a>
 
-        {{#if errorMessage.length}}
-        <ul class="validation">
-            {{#each errorMessage}}
-            <li class="error-message">{{ this }}</li>
-            {{/each}}
-        </ul>
-        {{/if}}
+        
 
     </form>
 </div>
