@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Sign Up</h1>
+    <form id="form" action="/auth/signup" method="POST">
+
+
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="username" />
+        </div>
+
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" />
+        </div>
+
+        <div class="field submit">
+            <button type="submit">Signup</button>
+        </div>
+        <a href="/auth/login"> Log In</a>
+
+        {{#if errorMessage.length}}
+        <ul class="validation">
+            {{#each errorMessage}}
+            <li class="error-message">{{ this }}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+
+    </form>
+</div>

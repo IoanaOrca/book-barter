@@ -4,7 +4,20 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  <body class="container">
+    {{#if user}}
+  
+    <form action="/auth/logout" method="post">
+      <div class="field submit">
+        <button>{{user.username}}</button>
+        <button type="submit">LogOut</button>
+      </div>
+    </form>
+     
+    {{else}}
+    <a href="/auth/login"> Login</a>
+    <a href="/auth/signup"> SignUp</a>
+     {{/if}}
     {{{body}}}
   </body>
 </html>
