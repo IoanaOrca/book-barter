@@ -1,3 +1,15 @@
+
+{{#each books}}
+<li>
+    <p>{{this.title}}</p>
+    <p>{{this.author}}</p>
+    <form method="POST" action="/edit-profile/delete/{{book._id}}"></form>
+        <div class="field submit">
+            <button>Delete Book</button>
+        </div>
+    </form>
+</li>
+{{/each}}
 <a href="/book/addbook">
     <button>Add Book</button>
 </a>
