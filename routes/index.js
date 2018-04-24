@@ -5,6 +5,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
+  throw new Error('debbug mesage');
   res.render('index');
 });
 

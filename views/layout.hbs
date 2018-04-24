@@ -4,25 +4,29 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body class="container">
-    {{#if user}}
-    
-    <a href="/edit-profile">
-    <button>{{user.username}}</button>
-    </a>
-    <form action="/auth/logout" method="post">
-      <div class="field submit">
-       
-        <button type="submit">LogOut</button>
+  <body>
+    <div id="site-header">
+      {{#if user}}
+      <a href="/edit-profile">
+      <button>{{user.username}}</button>
+      </a>
+      <form action="/auth/logout" method="post">
+        <div class="field submit">
+        
+          <button type="submit">LogOut</button>
+        </div>
+      </form>
+      
+      {{else}}
+      <a href="/auth/login"> Login</a>
+      <a href="/auth/signup"> SignUp</a>
+      {{/if}}
       </div>
-    </form>
-     
-    {{else}}
-    <a href="/auth/login"> Login</a>
-    <a href="/auth/signup"> SignUp</a>
-     {{/if}}
     {{{body}}}
+<div id="site-footer">
+  <p>Made by Jordi and Ioana @Ironhack</p>
 
+</div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc">
     </script>
