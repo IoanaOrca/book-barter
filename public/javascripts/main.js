@@ -1,27 +1,16 @@
+
 'use strict';
 
-function main () {
-  // -- utility functions
-  function getUserLocation () {
-    return new Promise((resolve, reject) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          position => {
-            const userPosition = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            resolve(userPosition);
-          },
-          () => {
-            resolve();
-          }
-        );
-      } else {
-        resolve();
-      }
-    });
-  }
+function main (id) {
+  axios.get(`/api/book/${id}`).then(response => {
+    const coords = response.data.book.owner.location.coordinates;
+    const location = { lat: coords[0], lng: coords[1] };
+    const container = document.getElementById('map');
+    const options = { zoom: 10, center: location };
+    const map = new google.maps.Map(container, options);
+
+    addMarker(map, location, 'book');
+  });
 
   function addMarker (map, location, title) {
     const markerOptions = {
@@ -32,30 +21,31 @@ function main () {
     myMarker.setMap(map);
     return myMarker;
   }
-
-  // -- build the map
-  const ironhackBCN = {
-    lat: 41.3977381,
-    lng: 2.190471916
-  };
-  const container = document.getElementById('map');
-  const options = {
-    zoom: 15,
-    center: ironhackBCN
-  };
-  const map = new google.maps.Map(container, options);
-
-  //   axios.get('/book/json').then(response => {
-  //     response.data.forEach(user => {
-  //       console.log(user);
-  //     });
-  //   });
-
-  getUserLocation().then(userLocation => {
-    if (userLocation) {
-      addMarker(map, userLocation, 'your location');
-    }
-  });
 }
 
-window.addEventListener('load', main);
+function searchLoaded () {
+  const search = document.querySelector('.btn-search');
+
+  function handleclick () {
+    const text = document.querySelector('#my-search').value;
+    document.getElementById('books').innerHTML = '';
+    const body = {
+      title: text
+    };
+
+    axios.post('/api/book', body)
+      .then(res => {
+        for (let ix = 0; ix < res.data.book.length; ix++) {
+          let newCharacterHtml = `
+          <li>
+            <h3> Title: ${res.data.book[ix].title} </h3>
+            <h3> Author: ${res.data.book[ix].author} </h3>
+            <a href="/book/{{res.data._id}}"> Details </a>
+          </li>`;
+          document.getElementById('books').innerHTML += newCharacterHtml;
+        }
+      });
+  }
+
+  search.addEventListener('click', handleclick);
+}

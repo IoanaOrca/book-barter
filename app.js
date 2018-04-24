@@ -14,6 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const bookRouter = require('./routes/book');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -60,6 +61,7 @@ app.use(flash());
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/book', bookRouter);
+app.use('/api', apiRouter);
 
 // -- 404 and error handler
 

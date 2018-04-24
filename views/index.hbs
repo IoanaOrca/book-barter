@@ -1,7 +1,16 @@
 <h1>Book Barter</h1>
-<form>
-    <div>
-        <input type="search" id="mySearch" name="q">
-        <button>Search</button>
-    </div>
-</form>
+
+    <input type="search" id="my-search" name="title" required>
+    <button class="btn-search">Search</button>
+
+<div id="books">
+    <ul>
+
+    </ul>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        searchLoaded();
+    });
+</script>

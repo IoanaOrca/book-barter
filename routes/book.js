@@ -24,7 +24,7 @@ router.post('/addbook', (req, res, next) => {
   book
     .save()
     .then(() => {
-      res.redirect('/book/:bookId');
+      res.redirect('/edit-profile');
     })
     .catch(next);
 });
@@ -38,16 +38,7 @@ router.get('/:bookId', (req, res, next) => {
       };
 
       res.render('book-details', data);
-    });
+    }).catch(next);
 });
-
-/* GET map page. */
-// router.get('/json', (req, res, next) => {
-//   Book.find({})
-//     .then(results => {
-//       res.json(results);
-//     })
-//     .catch(next);
-// });
 
 module.exports = router;
