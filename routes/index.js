@@ -6,7 +6,6 @@ const Book = require('../models/book');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  throw new Error('debbug mesage');
   res.render('index');
 });
 
