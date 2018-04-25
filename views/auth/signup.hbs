@@ -1,31 +1,41 @@
-<div class="container">
-    <h1>Sign Up</h1>
-    <form id="form" action="/auth/signup" method="POST">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+ 
+  </head>
+  <body id="signup">
+    <div class="auth">
+        <h1>Sign Up</h1>
+        <form id="form" action="/auth/signup" method="POST">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" required placeholder="Username" />
+            </div>
 
-        <div class="field">
-            <label>Username</label>
-            <input type="text" name="username" required placeholder="Username" />
-        </div>
+            <div class="field">
+                <label>Password</label>
+                <input id="myPassword" type="password" name="password" required placeholder="Password" />
+            </div>
 
-        <div class="field">
-            <label>Password</label>
-            <input type="password" name="password" required placeholder="Password" />
-        </div>
-
-        <div class="field submit">
-             {{#if errorMessage.length}}
-            <ul class="validation">
-                {{#each errorMessage}}
-                <li class="error-message">{{ this }}</li>
-                {{/each}}
-            </ul>
-            {{/if}}
-            <button type="submit">Signup</button>
-        </div>
-        <p>Already have an account?     
-        <a href="/auth/login"> Log In</a>
-        </p>
-        
-
-    </form>
-</div>
+            <div class="field submit">
+                <button type="submit">Signup</button>
+            </div>
+            <p>Already have an account?     
+                <a href="/auth/login"> Log In</a>
+            </p>
+              {{#if errorMessage.length}}
+                <div class="validation">
+                    {{#each errorMessage}}
+                        <p class="error-message">{{ this }}</p>
+                    {{/each}}
+                </div>
+                {{/if}}
+        </form>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc"></script>
+    <script src="/javascripts/main.js"></script>
+  </body>
+</html>

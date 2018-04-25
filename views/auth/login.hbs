@@ -1,28 +1,41 @@
-<div class="container">
-    <h1>Log In</h1>
-    <form id="form" action="/auth/login" method="POST">
-        <div class="field">
-            <label>Username</label>
-            <input type="text" name="username" required placeholder="Username" />
-        </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body id="login">
+    <div class="auth ">
+        <h1>Login</h1>
+        <form id="form" action="/auth/login" method="POST">
+            <div class="field">
+                <label>Username</label>
+                <input type="text" name="username" required placeholder="Username" />
+            </div>
 
-        <div class="field">
-            <label>Password</label>
-            <input type="password" name="password" required placeholder="Password" />
-        </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" required placeholder="Password" />
+            </div>
 
-        <div class="field submit"> 
-            <button type="submit">Login</button>
-        </div>
-        <a href="/auth/signup"> Create account</a>
-
-        {{#if errorMessage.length}}
-        <ul class="validation">
-            {{#each errorMessage}}
-            <li class="error-message">{{ this }}</li>
-            {{/each}}
-        </ul>
-        {{/if}}
-
-    </form>
-</div>
+            <div class="field submit"> 
+                <button type="submit">Login</button>
+            </div>
+            <p>Dont't have an account?
+                <a href="/auth/signup"> Sign Up</a>
+            </p>
+            {{#if errorMessage.length}}
+                <div class="validation">
+                    {{#each errorMessage}}
+                        <p class="error-message">{{ this }}</p>
+                    {{/each}}
+                </div>
+            {{/if}}
+        </form>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc">
+    </script>
+    <script src="/javascripts/main.js"></script>
+  </body>
+</html>

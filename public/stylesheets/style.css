@@ -23,6 +23,7 @@ body {
 }
 
 h1 {
+  text-align:center;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 2em;
 	font-style: normal;
@@ -49,7 +50,7 @@ p {
 }
 
 a {
-  color: #00B7FF;
+  color: #f7882f;
 }
 
 @media (min-width: 768px) {
@@ -131,7 +132,7 @@ form.is-processing {
 }
 #form {
   margin: 30px auto;
-  width: 380px;
+  width: 360px;
   text-align: center;
 }
 
@@ -156,8 +157,8 @@ form.is-processing {
 }
 
 #form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
+  background: #f7882f;
+  border: 1px solid #f7882f;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -182,21 +183,26 @@ form a {
 
 #form button:hover {
   background: #fff;
-  color: #43a3e6;
+  color: #f7882f;
   transition: .3s ease background;
 }
 form .validation {
   margin: 5px 0 10px;
   color: red;
 }
-
+/* 
 form .field.has-error label {
 	color: red;
 }
 form .field.has-error input {
 	border: 1px solid  red;
-}
+} */
+form .error-message {
+  color:red;
+  padding: 8px 2px;
+  text-align: left;
 
+}
 /* ---- Not-found---- */
 #not-found { 
   background-image: url('/images/not-found.jpg');
@@ -226,24 +232,24 @@ form .field.has-error input {
 }
 /* ---- Error---- */
 #error { 
-  background-image: url('/images/not-found.jpg');
+  background-image: url('/images/error.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   color:white;
   height: 100vh;
 }
-.not-found {
-  padding-top:30vh;
+.error {
+  padding-top:20vh;
   margin-bottom: 30px;
 }
 
-.not-found h3{
-  padding-top:30px;
+.error h3{
+  padding-top:10px;
   text-align: left;
-  margin-bottom:30px;
+  margin-bottom:10px;
 }
 
-.not-found a{
+.error a{
   display: inline-block;
   background-color: #f7882f;
   padding:10px 20px;
@@ -254,8 +260,28 @@ form .field.has-error input {
 
 /* ---- Login & Signup ---- */
 
-h1 {
-  text-align:center;
-  padding-top:30px;
+#login {
+  background-image: url('/images/auth.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:white;
+  height: 100vh;
 }
 
+#signup {
+  background-image: url('/images/auth.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:white;
+  height: 100vh;
+}
+.auth {
+  display:block;
+  background-color: #dcc7aa;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 20px;
+  border-radius: 5px;
+}
