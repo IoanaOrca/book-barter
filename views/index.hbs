@@ -1,18 +1,65 @@
-<div class="container">
-<h1>Book Barter</h1>
 
-    <input type="search" id="my-search" name="title" required>
-    <button class="btn-search">Search</button>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book-barter.</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
 
-<div id="books" class="container">
-    <ul>
+  <body>
+    <div id="index">
+      <div class="header container">
+        <div class="nav">
+            <div class="site-logo">
+                <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
+            </div>
+            {{#if user}}
+            <div class="menu">
+            <a href="/edit-profile">
+                <button>{{user.username}}</button>
+            </a>
+            
+            <form action="/auth/logout" method="post">
+                <div class="field submit">
+                <button type="submit">LogOut</button>
+                </div>
+            </form>
+            </div>
+            {{else}}
+            <div class="menu">
+            <a href="/auth/login"> Login</a>
+        
+            <a href="/auth/signup"> SignUp</a>
+            </div>
+            {{/if}}
+        </div>
+      <h1>Share on BookBarter</h1>
+      <h3>Borrow and lend books. Save money. Read more</h3>
+      </div>
+      
+    </div>
+        
+    <div id="search">
+        <div class="search">
+            <input type="search" id="my-search" name="title" required>
+            <button class="btn-search">Search</button>
+        </div>
+    </div>
 
-    </ul>
-</div>
+    <div id="books" >
+        <ul>
 
-<script>
-    window.addEventListener('load', () => {
-        searchLoaded();
-    });
-</script>
+        </ul>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            searchLoaded();
+        });
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc">
+    </script>
+    <script src="/javascripts/main.js"></script>
+  </body>
+</html>
