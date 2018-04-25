@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
+require('dotenv').config();
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -20,7 +21,7 @@ const app = express();
 
 // database connection
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/book-barter', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
 });
