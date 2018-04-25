@@ -1,15 +1,35 @@
 
-{{#each books}}
+<h3>Information</h3>
+<p> Username: {{user.username}}</p>
+<p> Email: {{user.email}}</p>
+
+<h3>My books</h3>
+
+{{#each mybooks}}
 <li>
     <p>{{this.title}}</p>
     <p>{{this.author}}</p>
-    <form method="POST" action="/edit-profile/delete"></form>
+    <form method="POST" action="/edit-profile/delete/{{this._id}}">
         <div class="field submit">
             <button>Delete Book</button>
         </div>
     </form>
 </li>
 {{/each}}
+
+
 <a href="/book/addbook">
     <button>Add Book</button>
 </a>
+
+<h3>Reserved books</h3>
+
+{{#each reservedbooks}}
+<li>
+    <p>{{this.title}}</p>
+    <p>{{this.author}}</p>
+</li>
+{{/each}}
+
+
+

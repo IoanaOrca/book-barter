@@ -7,9 +7,17 @@
 <div class="container">
     <h2>Owner </h2>
     <h3>Username: {{book.owner.username}}</h3>
+    <h3>Email: {{book.owner.email}}</h3>
 
 </div>
 
+{{#unless owned}}
+<form method="POST" action="/book/{{book._id}}/reserve">
+    <div class="field submit">
+        <button>Reserve</button>
+    </div>
+</form>
+{{/unless }}
 
 <div id="map"></div>
 

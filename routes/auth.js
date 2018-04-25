@@ -16,6 +16,7 @@ router.get('/signup', (req, res, next) => {
 
 /* Post signup page. */
 router.post('/signup', (req, res, next) => {
+  const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
 
@@ -32,6 +33,7 @@ router.post('/signup', (req, res, next) => {
       const hashPass = bcrypt.hashSync(password, salt);
 
       const user = new User({
+        email,
         username,
         password: hashPass
       });

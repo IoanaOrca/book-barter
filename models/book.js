@@ -15,6 +15,10 @@ const bookSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
+  },
+  applicant: {
+    type: Schema.Types.ObjectId,
+    default: null
   }
 });
 

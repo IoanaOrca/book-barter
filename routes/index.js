@@ -11,18 +11,21 @@ router.get('/', (req, res, next) => {
 
 /* GET profile page. */
 router.get('/edit-profile', (req, res, next) => {
-  Book.find({owner: req.session.user._id})
-    .then(result => {
-      const data = {
-        books: result
-      };
+  const data = {};
+  Book.find({ owner: req.session.user._id })
+    .then(resultmybook => {
+      data.mybooks = resultmybook;
+      return Book.find({ applicant: req.session.user._id });
+    })
+    .then(resultbooksapplied => {
+      data.reservedbooks = resultbooksapplied;
       res.render('edit-profile', data);
     });
 });
 
 /* POST delete book. */
-router.post('/edit-profile/delete', (req, res, next) => {
-  Book.remove({ _id: req.params._id })
+router.post('/edit-profile/delete/:bookId', (req, res, next) => {
+  Book.remove({ _id: req.params.bookId })
     .then(() => {
       res.redirect('/edit-profile');
     });

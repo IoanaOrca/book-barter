@@ -19,7 +19,13 @@ router.get('/book/:bookId', (req, res, next) => {
 /* POST book page. */
 router.post('/book', (req, res, next) => {
   const title = req.body.title;
-  Book.find({ title })
+  Book.find({
+    $and: [
+      { title: title },
+      { applicant: null },
+      { owner: { $ne: req.session.user._id } }
+    ]
+  })
     .populate('owner')
     .then(result => {
       const data = { book: result };

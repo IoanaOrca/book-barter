@@ -39,7 +39,7 @@ function searchLoaded () {
           <li>
             <h3> Title: ${res.data.book[ix].title} </h3>
             <h3> Author: ${res.data.book[ix].author} </h3>
-            <a href="/book/:bookId"> Details </a>
+            <a href="/book/${res.data.book[ix]._id}"> Details </a>
           </li>`;
           document.getElementById('books').innerHTML += newCharacterHtml;
         }
