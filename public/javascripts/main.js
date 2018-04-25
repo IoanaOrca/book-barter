@@ -1,4 +1,3 @@
-
 'use strict';
 
 function main (id) {
@@ -40,7 +39,7 @@ function searchLoaded () {
           <li>
             <h3> Title: ${res.data.book[ix].title} </h3>
             <h3> Author: ${res.data.book[ix].author} </h3>
-            <a href="/book/{{res.data._id}}"> Details </a>
+            <a href="/book/:bookId"> Details </a>
           </li>`;
           document.getElementById('books').innerHTML += newCharacterHtml;
         }

@@ -21,7 +21,7 @@ router.get('/edit-profile', (req, res, next) => {
 });
 
 /* POST delete book. */
-router.post('/edit-profile/delete/:bookId', (req, res, next) => {
+router.post('/edit-profile/delete', (req, res, next) => {
   Book.remove({ _id: req.params._id })
     .then(() => {
       res.redirect('/edit-profile');
