@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>Book-barter.</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+
   <body>
     <div id="site-header">
-      {{#if user}}
-      <a href="/edit-profile">
-      <button>{{user.username}}</button>
-      </a>
-      <form action="/auth/logout" method="post">
-        <div class="field submit">
-        
-          <button type="submit">LogOut</button>
+      <div class="header">
+        <div class="site-logo">
+          <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
         </div>
-      </form>
-      
-      {{else}}
-      <a href="/auth/login"> Login</a>
-      <a href="/auth/signup"> SignUp</a>
-      {{/if}}
+        {{#if user}}
+        <div class="auth1">
+          <a href="/edit-profile">
+            <button>{{user.username}}</button>
+          </a>
+        </div>
+        <div class="auth2">
+          <form action="/auth/logout" method="post">
+            <div class="field submit">
+              <button type="submit">LogOut</button>
+            </div>
+          </form>
+        </div>
+        {{else}}
+        <div class="auth1">
+          <a href="/auth/login"> Login</a>
+        </div>
+        <div class="auth2">
+          <a href="/auth/signup"> SignUp</a>
+        </div>
+        {{/if}}
       </div>
-    {{{body}}}
-<div id="site-footer">
-  <p>Made by Jordi and Ioana @Ironhack</p>
+    </div>
 
-</div>
+    {{{body}}}
+
+{{!-- <div id="site-footer">
+  <p>Made by Jordi and Ioana @Ironhack</p>
+</div> --}}
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc">
     </script>

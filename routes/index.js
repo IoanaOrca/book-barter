@@ -6,7 +6,7 @@ const Book = require('../models/book');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.render('index', {layout: false});
 });
 
 /* GET profile page. */
