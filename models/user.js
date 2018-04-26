@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-
   email: {
     type: String,
     required: true
@@ -20,16 +19,6 @@ const userSchema = new Schema({
   reserved: {
     type: Object,
     default: []
-  },
-  location: {
-    type: {
-      type: String,
-      default: 'Point'
-    },
-    coordinates: {
-      type: [Number],
-      default: [41.3631161, 2.169756]
-    }
   }
 });
 

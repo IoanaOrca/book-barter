@@ -21,8 +21,7 @@ const bookSchema = new Schema({
     required: true
   },
   description: {
-    type: String,
-    required: true
+    type: String
   },
   owner: {
     type: Schema.Types.ObjectId,
@@ -31,6 +30,12 @@ const bookSchema = new Schema({
   applicant: {
     type: Schema.Types.ObjectId,
     default: null
+  },
+  location: {
+    type: {
+      type: String
+    },
+    coordinates: [Number]
   }
 });
 

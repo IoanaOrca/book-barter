@@ -3,7 +3,6 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models/book');
-const User = require('../models/user');
 
 /* GET addbook page. */
 router.get('/addbook', (req, res, next) => {
@@ -18,6 +17,10 @@ router.post('/addbook', (req, res, next) => {
   const condition = req.body.condition;
   const description = req.body.description;
   const owner = req.session.user._id;
+  const location = {
+    type: 'point',
+    coordinates: [req.body.cityLat, req.body.cityLng]
+  };
 
   const book = new Book({
     title,
@@ -25,7 +28,8 @@ router.post('/addbook', (req, res, next) => {
     genre,
     condition,
     description,
-    owner
+    owner,
+    location
   });
 
   book

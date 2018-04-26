@@ -15,7 +15,7 @@
 
         <div class="field">
             <label>Genre</label>
-            <input list="genre" required placeholder="Genre">
+            <input list="genre" name="genre" required placeholder="Genre">
             <datalist id="genre">
                 <option value="Science Fiction">
                 <option value="Drama">
@@ -28,7 +28,7 @@
         </div>
         <div class="field">
             <label>Condition</label>
-            <input list="condition" required placeholder="Condition">
+            <input list="condition" name="condition" required placeholder="Condition">
             <datalist id="condition">
                 <option value="As New">
                 <option value="Very Good">
@@ -40,12 +40,25 @@
 
         <div class="field">
             <label>Description</label>
-            <textarea type="textarea" rows="10" cols="55" name="decription"></textarea>
+            <textarea type="textarea" rows="10" cols="55" name="description"></textarea>
         </div>
+
+        <h1>Book location</h1>
+
+        <input id="searchTextField" type="text" size="50" required placeholder="Enter a location" autocomplete="on" runat="server" />
+        <input type="text" id="city2" name="city2" />
+        <input type="text" id="cityLat" name="cityLat" />
+        <input type="text" id="cityLng" name="cityLng" />
         
         <div class="field submit">
             <button type="submit">Add Book</button>
         </div>
 
     </form>
+
+        <script>
+            window.addEventListener('load', () => {
+                initialize();
+            });
+        </script>
 </div>
