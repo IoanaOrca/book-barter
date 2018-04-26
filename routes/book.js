@@ -1,8 +1,11 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const mongoose = require('mongoose');
+
 const Book = require('../models/book');
+
+const router = express.Router();
 
 /* GET addbook page. */
 router.get('/addbook', (req, res, next) => {
@@ -32,8 +35,7 @@ router.post('/addbook', (req, res, next) => {
     location
   });
 
-  book
-    .save()
+  book.save()
     .then(() => {
       res.redirect('/edit-profile');
     })
@@ -42,19 +44,30 @@ router.post('/addbook', (req, res, next) => {
 
 /* GET detail page. */
 router.get('/:bookId', (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.bookId)) {
+    next();
+    return;
+  }
   // check if the user is logged in
-  Book.findOne({ _id: req.params.bookId }).populate('owner')
+  Book.findOne({ _id: req.params.bookId })
+    .populate('owner')
     .then(result => {
-      const data = {
-        book: result
-      };
+      if (!result) {
+        next();
+        return;
+      }
+
+      const data = { book: result };
       res.render('book-details', data);
-    }).catch(next);
+    })
+    .catch(next);
 });
 
 /* POST reserve book. */
 router.post('/:bookId/reserve', (req, res, next) => {
-  Book.update({_id: req.params.bookId}, { applicant: req.session.user._id })
+  const criteria = {_id: req.params.bookId};
+  const projection = { applicant: req.session.user._id };
+  Book.update(criteria, projection)
     .then(result => {
       res.redirect('/edit-profile');
     })

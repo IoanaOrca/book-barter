@@ -1,36 +1,44 @@
 <div id="edit-profile">
-<div class="edit-profile ">
-    <h3>Personal Information</h3>
-    <p> Username: {{user.username}}</p>
-    <p> Email: {{user.email}}</p>
-<hr>
-    <h3>My books</h3>
+    <div class="edit-profile ">
+        <h3>Personal Information</h3>
+        <p> Username: {{user.username}}</p>
+        <p> Email: {{user.email}}</p>
+        <hr/>
+        <h3>My books</h3>
 
-    {{#each mybooks}}
-    <li>
-        <p>{{this.title}} by {{this.author}}</p>
-        <form method="POST" action="/edit-profile/delete/{{this._id}}">
-            <div class="field submit">
-                <button>Remove this Book</button>
-            </div>
-        </form>
-    </li>
-    {{/each}}
+        <ul>
+            {{#each mybooks}}
+            <li>
+                <p>{{this.title}} by {{this.author}}</p>
+                <form method="POST" action="/edit-profile/delete/{{this._id}}">
+                    <div class="field submit">
+                        <button>Remove this Book</button>
+                    </div>
+                </form>
+            </li>
+            {{/each}}
+        </ul>
 
 
-    <a href="/book/addbook" class="add-book">
-        <button>Add a new Book</button>
-    </a>
-<hr>
-    <h3>Reserved books</h3>
+        <a href="/book/addbook" class="add-book">
+            <button>Add a new Book</button>
+        </a>
+        <hr/>
+        <h3>Reserved books</h3>
 
-    {{#each reservedbooks}}
-    <li>
-        <p>{{this.owner.email}}</p>
-        <p>{{this.title}}</p>
-        <p>{{this.author}}</p>
-    </li>
-    {{/each}}
+        <ul>
+            {{#each reservedbooks}}
+            <li>
+                <p>{{this.owner.email}}</p>
+                <p>{{this.title}}</p>
+                <p>{{this.author}}</p>
+                <form method="POST" action="/edit-profile/unreserve/{{this._id}}">
+                    <div class="field submit">
+                        <button>Unreserve</button>
+                    </div>
+                </form>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
 </div>
-
-

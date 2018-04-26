@@ -19,6 +19,16 @@ function main (id) {
     return myMarker;
   }
 }
+function initialize () {
+  var input = document.getElementById('searchTextField');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+    var place = autocomplete.getPlace();
+    document.getElementById('city2').value = place.name;
+    document.getElementById('cityLat').value = place.geometry.location.lat();
+    document.getElementById('cityLng').value = place.geometry.location.lng();
+  });
+}
 
 function searchLoaded (id) {
   const search = document.querySelector('.btn-search');
@@ -50,15 +60,4 @@ function searchLoaded (id) {
   }
 
   search.addEventListener('click', handleclick);
-}
-
-function initialize () {
-  var input = document.getElementById('searchTextField');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  google.maps.event.addListener(autocomplete, 'place_changed', function () {
-    var place = autocomplete.getPlace();
-    document.getElementById('city2').value = place.name;
-    document.getElementById('cityLat').value = place.geometry.location.lat();
-    document.getElementById('cityLng').value = place.geometry.location.lng();
-  });
 }

@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
   <head>
-    <title>Book-barter.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{title}} - BookBarter.</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  
+  <body id="{{bodyId}}">
+
     <div class="wrapper">
-    <div id="site-header">
-      <div class="site-header ">
-            <div class="nav container">
-                <div class="site-logo">
-                    <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
-                </div>
-                {{#if user}}
-                <div class="menu">
-                  <a href="/edit-profile">
-                      <button class="status">{{user.username}}</button>
-                  </a>
-                  
-                  <form action="/auth/logout" method="post">
-                      <div class="field submit">
-                      <button type="submit" class="status">LogOut</button>
-                      </div>
-                  </form>
-                </div>
-                {{else}}
-                <div class="menu">
-                    <a href="/auth/signup" > <button class="status">SignUp</button></a>
-                    <a href="/auth/login" > <button class="status">Login</button></a>
-                </div>
-                {{/if}}
-            </div>
-      </div>
-  </div> 
-    {{{body}}}
-</div>
-<div id="site-footer">
-  <p>Made by Jordi and Ioana @Ironhack</p>
-</div>
+      <div id="site-header">
+        <div class="site-header ">
+          <div class="nav container">
+              <div class="site-logo">
+                  <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
+              </div>
+              {{#if user}}
+              <div class="menu">
+                <a href="/edit-profile">
+                    <button class="status">{{user.username}}</button>
+                </a>
+                
+                <form action="/auth/logout" method="post">
+                    <div class="field submit">
+                    <button type="submit" class="status">LogOut</button>
+                    </div>
+                </form>
+              </div>
+              {{else}}
+              <div class="menu">
+                  <a href="/auth/signup" > <button class="status">SignUp</button></a>
+                  <a href="/auth/login" > <button class="status">Login</button></a>
+              </div>
+              {{/if}}
+          </div>
+        </div>
+      </div> 
+
+      {{{body}}}
+
+    </div>
+
+    <div id="site-footer">
+      <p>Made by Jordi and Ioana @Ironhack</p>
+    </div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc&libraries=places" async
-      defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc&libraries=places" async defer></script>
     <script src="/javascripts/main.js"></script>
+
   </body>
 </html>

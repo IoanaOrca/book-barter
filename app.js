@@ -15,6 +15,7 @@ const MongoStore = require('connect-mongo')(session);
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const bookRouter = require('./routes/book');
+const profileRouter = require('./routes/profile');
 const apiRouter = require('./routes/api');
 
 const app = express();
@@ -25,6 +26,10 @@ mongoose.connect('mongodb://localhost/book-barter', {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
 });
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 // session
 app.use(
@@ -42,26 +47,25 @@ app.use(
   })
 );
 
+// middleware
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(flash());
+
 app.use((req, res, next) => {
   app.locals.user = req.session.user;
   next();
 });
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
-// middleware
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(flash());
+// -- routes
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/book', bookRouter);
+app.use('/edit-profile', profileRouter);
 app.use('/api', apiRouter);
 
 // -- 404 and error handler
@@ -69,7 +73,12 @@ app.use('/api', apiRouter);
 // NOTE: requires a views/not-found.ejs template
 app.use((req, res, next) => {
   res.status(404);
-  res.render('not-found', {layout: false});
+  const data = {
+    title: 'Unexpected Error',
+    bodyId: 'error',
+    layout: 'errors/layout'
+  };
+  res.render('errors/not-found', data);
 });
 
 // NOTE: requires a views/error.ejs template
@@ -80,7 +89,12 @@ app.use((err, req, res, next) => {
   // only render if the error ocurred before sending the response
   if (!res.headersSent) {
     res.status(500);
-    res.render('error', {layout: false});
+    const data = {
+      title: 'Not Found',
+      bodyId: 'not-found',
+      layout: 'errors/layout'
+    };
+    res.render('errors/error', data);
   }
 });
 

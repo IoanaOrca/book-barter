@@ -1,16 +1,21 @@
 'use strict';
 
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 const bcrypt = require('bcrypt');
+
 const User = require('../models/user');
+
+const router = express.Router();
 const bcryptSalt = 10;
 
 /* GET signup page. */
 router.get('/signup', (req, res, next) => {
   const data = {
-    layout: false,
-    errorMessage: req.flash('signup-error') };
+    title: 'Signup',
+    bodyId: 'signup',
+    layout: 'auth/layout',
+    errorMessage: req.flash('signup-error')
+  };
   res.render('auth/signup', data);
 });
 
@@ -32,26 +37,23 @@ router.post('/signup', (req, res, next) => {
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      const user = new User({
-        email,
-        username,
-        password: hashPass
-      });
+      const user = new User({ email, username, password: hashPass });
 
-      user
-        .save()
+      return user.save()
         .then(() => {
           req.session.user = user;
           res.redirect('/');
-        })
-        .catch(next);
-    });
+        });
+    })
+    .catch(next);
 });
 
 /* GET login page. */
 router.get('/login', (req, res, next) => {
   const data = {
-    layout: false,
+    title: 'Login',
+    bodyId: 'login',
+    layout: 'auth/layout',
     errorMessage: req.flash('login-error') };
   res.render('auth/login', data);
 });
@@ -67,13 +69,15 @@ router.post('/login', (req, res, next) => {
       if (!result) {
         req.flash('login-error', 'Username can not be found!');
         res.redirect('/auth/login');
-      } else if (!bcrypt.compareSync(password, result.password)) {
+        return;
+      }
+      if (!bcrypt.compareSync(password, result.password)) {
         req.flash('login-error', 'Incorrect password!');
         res.redirect('/auth/login');
-      } else {
-        req.session.user = result;
-        res.redirect('/');
+        return;
       }
+      req.session.user = result;
+      res.redirect('/');
     })
     .catch(next);
 });

@@ -1,52 +1,35 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
- 
-  </head>
-  <body id="signup">
-    <div class="site-header">
-      <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
-    <div>
-    <div class="auth">
-        <h1>Sign Up</h1>
-        <form id="form" action="/auth/signup" method="POST">
 
-            <div class="field">
-                {{!-- <label>Email</label> --}}
-                <input type="text" name="email" placeholder="Email" />
-            </div>
+<h1>Sign Up</h1>
+<form id="form" action="/auth/signup" method="POST">
 
-            <div class="field">
-                {{!-- <label>Username</label> --}}
-                <input type="text" name="username" required placeholder="Username" />
-            </div>
-
-            <div class="field">
-                {{!-- <label>Password</label> --}}
-                <input id="myPassword" type="password" name="password" required placeholder="Password" />
-            </div>
-
-            
-
-            <div class="field submit">
-                <button type="submit">Signup</button>
-            </div>
-            <p>Already have an account?     
-                <a href="/auth/login"> Log In</a>
-            </p>
-              {{#if errorMessage.length}}
-                <div class="validation">
-                    {{#each errorMessage}}
-                        <p class="error-message">{{ this }}</p>
-                    {{/each}}
-                </div>
-                {{/if}}
-        </form>
+    <div class="field">
+        {{!-- <label>Email</label> --}}
+        <input type="text" name="email" placeholder="Email" />
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc"></script>
-    <script src="/javascripts/main.js"></script>
-  </body>
-</html>
+
+    <div class="field">
+        {{!-- <label>Username</label> --}}
+        <input type="text" name="username" required placeholder="Username" />
+    </div>
+
+    <div class="field">
+        {{!-- <label>Password</label> --}}
+        <input id="myPassword" type="password" name="password" required placeholder="Password" />
+    </div>
+
+    
+
+    <div class="field submit">
+        <button type="submit">Signup</button>
+    </div>
+    <p>Already have an account?     
+        <a href="/auth/login"> Log In</a>
+    </p>
+        {{#if errorMessage.length}}
+        <div class="validation">
+            {{#each errorMessage}}
+                <p class="error-message">{{ this }}</p>
+            {{/each}}
+        </div>
+        {{/if}}
+</form>
