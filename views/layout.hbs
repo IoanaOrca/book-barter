@@ -7,32 +7,7 @@
 
   <body>
     <div id="site-header">
-      <div class="header">
-        <div class="site-logo">
-          <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
-        </div>
-        {{#if user}}
-        <div class="auth1">
-          <a href="/edit-profile">
-            <button>{{user.username}}</button>
-          </a>
-        </div>
-        <div class="auth2">
-          <form action="/auth/logout" method="post">
-            <div class="field submit">
-              <button type="submit">LogOut</button>
-            </div>
-          </form>
-        </div>
-        {{else}}
-        <div class="auth1">
-          <a href="/auth/login"> Login</a>
-        </div>
-        <div class="auth2">
-          <a href="/auth/signup"> SignUp</a>
-        </div>
-        {{/if}}
-      </div>
+      <div class="header container">
     </div>
 
     {{{body}}}
