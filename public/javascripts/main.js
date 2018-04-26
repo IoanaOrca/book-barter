@@ -35,8 +35,8 @@ function searchLoaded (id) {
         for (let ix = 0; ix < res.data.book.length; ix++) {
           let newCharacterHtml = `
           <li>
-            <h3>Book: ${res.data.book[ix].title} | ${res.data.book[ix].author} </h3>
-            <h3>Owner: ${res.data.book[ix].owner.username}</h3>`;
+            <p>Book: ${res.data.book[ix].title} | ${res.data.book[ix].author} </p>
+            <p>Owner: ${res.data.book[ix].owner.username}</p>`;
 
           if (id) {
             newCharacterHtml += `<a href="/book/${res.data.book[ix]._id}"> Details </a>`;

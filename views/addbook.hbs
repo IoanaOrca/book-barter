@@ -1,20 +1,19 @@
 
-<div class="container">
+<div class="container" id="add-book">
+    <div class="form">
     <h1>Add Book</h1>
     <form id="form" action="/book/addbook" method="POST">
 
         <div class="field">
-            <label>Title</label>
+           
             <input type="text" name="title" required placeholder="Title" />
         </div>
 
         <div class="field">
-            <label>Author</label>
             <input type="text" name="author" required placeholder="Author" />
         </div>
 
         <div class="field">
-            <label>Genre</label>
             <input list="genre" name="genre" required placeholder="Genre">
             <datalist id="genre">
                 <option value="Science Fiction">
@@ -27,7 +26,6 @@
             </datalist>
         </div>
         <div class="field">
-            <label>Condition</label>
             <input list="condition" name="condition" required placeholder="Condition">
             <datalist id="condition">
                 <option value="As New">
@@ -40,15 +38,15 @@
 
         <div class="field">
             <label>Description</label>
-            <textarea type="textarea" rows="10" cols="55" name="description"></textarea>
+            <textarea type="textarea" rows="4" cols="55" name="description"></textarea>
         </div>
 
         <h1>Book location</h1>
 
         <input id="searchTextField" type="text" size="50" required placeholder="Enter a location" autocomplete="on" runat="server" />
-        <input type="text" id="city2" name="city2" />
-        <input type="text" id="cityLat" name="cityLat" />
-        <input type="text" id="cityLng" name="cityLng" />
+        <input type="hidden" id="city2" name="city2" />
+        <input type="hidden" id="cityLat" name="cityLat" />
+        <input type="hidden" id="cityLng" name="cityLng" />
         
         <div class="field submit">
             <button type="submit">Add Book</button>
@@ -61,4 +59,5 @@
                 initialize();
             });
         </script>
+    </div>
 </div>

@@ -15,7 +15,7 @@ router.get('/edit-profile', (req, res, next) => {
   Book.find({ owner: req.session.user._id })
     .then(resultmybook => {
       data.mybooks = resultmybook;
-      return Book.find({ applicant: req.session.user._id });
+      return Book.find({ applicant: req.session.user._id }).populate('owner');
     })
     .then(resultbooksapplied => {
       data.reservedbooks = resultbooksapplied;

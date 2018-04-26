@@ -1,42 +1,36 @@
+<div id="edit-profile">
+<div class="edit-profile ">
+    <h3>Personal Information</h3>
+    <p> Username: {{user.username}}</p>
+    <p> Email: {{user.email}}</p>
+<hr>
+    <h3>My books</h3>
 
-<h3>Information</h3>
-<p> Username: {{user.username}}</p>
-<p> Email: {{user.email}}</p>
-
-<h3>My books</h3>
-
-{{#each mybooks}}
-<li>
-    <p>{{this.title}}</p>
-    <p>{{this.author}}</p>
-    <form method="POST" action="/edit-profile/delete/{{this._id}}">
-        <div class="field submit">
-            <button>Delete Book</button>
-        </div>
-    </form>
-</li>
-{{/each}}
+    {{#each mybooks}}
+    <li>
+        <p>{{this.title}} by {{this.author}}</p>
+        <form method="POST" action="/edit-profile/delete/{{this._id}}">
+            <div class="field submit">
+                <button>Remove this Book</button>
+            </div>
+        </form>
+    </li>
+    {{/each}}
 
 
-<a href="/book/addbook">
-    <button>Add Book</button>
-</a>
+    <a href="/book/addbook" class="add-book">
+        <button>Add a new Book</button>
+    </a>
+<hr>
+    <h3>Reserved books</h3>
 
-<h3>Reserved books</h3>
-
-{{#each reservedbooks}}
-<li>
-    <p>{{this.title}}</p>
-    <p>{{this.author}}</p>
-</li>
-{{/each}}
-
-<div id="map"></div>
-<script>
-    window.addEventListener('load', () => {
-        //main('{{book._id}}', '{{user._id}}');
-        // initialize();
-    });
-</script>
+    {{#each reservedbooks}}
+    <li>
+        <p>{{this.owner.email}}</p>
+        <p>{{this.title}}</p>
+        <p>{{this.author}}</p>
+    </li>
+    {{/each}}
+</div>
 
 
