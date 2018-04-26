@@ -8,52 +8,53 @@
   </head>
 
   <body class="index">
-    <div id="index">
-      <div class="header container">
-        <div class="nav">
-            <div class="site-logo">
-                <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
-            </div>
-            {{#if user}}
-            <div class="menu">
-            <a href="/edit-profile">
-                <button class="status">{{user.username}}</button>
-            </a>
-            
-            <form action="/auth/logout" method="post">
-                <div class="field submit">
-                <button type="submit" class="status">LogOut</button>
+    <div class="wrapper">
+        <div id="index">
+        <div class="header container">
+            <div class="nav">
+                <div class="site-logo">
+                    <a href="/"><img src="/images/logo.png" alt="logo" class="logo"></a>  
                 </div>
-            </form>
+                {{#if user}}
+                <div class="menu">
+                <a href="/edit-profile">
+                    <button class="status">{{user.username}}</button>
+                </a>
+                
+                <form action="/auth/logout" method="post">
+                    <div class="field submit">
+                    <button type="submit" class="status">LogOut</button>
+                    </div>
+                </form>
+                </div>
+                {{else}}
+                <div class="menu">
+                    <a href="/auth/signup" > <button class="status">SignUp</button></a>
+                    <a href="/auth/login" > <button class="status">Login</button></a>
+                </div>
+                {{/if}}
             </div>
-            {{else}}
-            <div class="menu">
-                <a href="/auth/signup" > <button class="status">SignUp</button></a>
-                 <a href="/auth/login" > <button class="status">Login</button></a>
+            <div class="main-title">
+        <h1>Share on BookBarter</h1>
+        <h3>Borrow and lend books. Save money. Read more</h3>
             </div>
-            {{/if}}
         </div>
-        <div class="main-title">
-      <h1>Share on BookBarter</h1>
-      <h3>Borrow and lend books. Save money. Read more</h3>
-        </div>
-      </div>
-      
-    </div>
         
-    <div id="search">
-        <div class="search">
-            <input type="search" id="my-search" name="title" required placeholder="Book title...">
-            <button class="btn-search"><i class="fas fa-search"></i></button>
+        </div>
+            
+        <div id="search">
+            <div class="search">
+                <input type="search" id="my-search" name="title" required placeholder="Book title...">
+                <button class="btn-search"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div id="books" >
+            <ul>
+
+            </ul>
         </div>
     </div>
-
-    <div id="books" >
-        <ul>
-
-        </ul>
-    </div>
-
     <script>
         window.addEventListener('load', () => {
             searchLoaded('{{user._id}}');
@@ -63,5 +64,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ3f9K-p8OqRjzsmgiOicS3VlQNx8Mbsc">
     </script>
     <script src="/javascripts/main.js"></script>
+    <div id="site-footer">
+  <p>Made by Jordi and Ioana @Ironhack</p>
+</div>
   </body>
 </html>

@@ -8,8 +8,10 @@ html {
 }
 
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #dcc7aa;
 }
 /* *{
   border: 1px solid white;
@@ -89,17 +91,39 @@ a {
 }
 /* ---- layout ---- */
 
-#site-header {
-  padding: 30px 0;
-  color: white;
-  
+.nav {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom:-30px;
 }
 
+.menu{
+  display:flex;
+  margin-right:0;
+  padding-top:10px;
+}
+#site-header {
+  color: white;
+}
+
+.wrapper {
+  min-height: calc(100vh - 70px);
+
+}
+.site-header {
+  background-color: #6b7a8f;
+}
 #site-footer {
   color: white;
-  padding: 60px 0;
-  background: #111;
+  padding: 15px 20px;
+  background-color: #6b7a8f;
+  margin-bottom: -50px;
 }
+#site-footer p{
+  text-align: right;
+}
+
 
 #site-main {
   margin-bottom: 60px;
@@ -123,7 +147,11 @@ a {
 
 /* ---- map ---- */
 #map{
-  height: 80vh;
+  height: 40vh;
+  padding-top:20px;
+  margin-bottom:40px;
+  border: 3px solid #f7882f;
+  border-radius: 10px;
 }
 
 
@@ -282,10 +310,10 @@ form .error-message {
   border-radius: 5px;
 }
 .logo {
-  -webkit-filter: invert(100%);
-  width:100px;
+  
+  width:200px;
   height:100px;
-  /* padding-top:10px; */
+  
   padding-left:10px;
 }
 
@@ -312,17 +340,6 @@ form .error-message {
   margin-bottom:20px;
 }
 
-#index .nav {
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#index .menu{
-  display:flex;
-  margin-right:0;
-  padding-top:10px;
-}
 .menu a{
   flex: 1 0 auto;
   padding:10px;
@@ -394,8 +411,8 @@ form .error-message {
     display:block;
     margin-left:auto;
     margin-right:auto;
-    border:2px solid #f7882f;
-    color:#808080;;
+    border:3px solid #f7882f;
+    color:#808080;
     border-radius: 7px;
     padding: 10px 20px;
     overflow:hidden;
@@ -410,4 +427,58 @@ form .error-message {
   padding: 5px 10px;
   background-color:#f7882f;
   border-radius: 5px;
+}
+#books a:hover{
+  background-color: #6b7a8f;
+}
+
+#books h3{
+  padding:5px;
+  margin: 10px 0;
+}
+
+/* ---- book detail ---- */
+
+#book-detail{
+  color:#808080;
+  padding-top:20px;
+  margin-bottom:20px;
+}
+
+#book-detail .details{
+  padding-top:20px;
+  overflow:hidden;
+  margin-bottom:20px;
+  color:#808080;
+  border:3px solid #f7882f;
+  background-color: #fff;
+  border-radius:10px;
+}
+
+#book-detail .reserve {
+  color:white;
+  text-decoration: none;
+  float:right;
+  display: block;
+  background-color:#f7882f;
+  border-radius: 5px;
+  margin-right:20px;
+  margin-bottom:20px;
+}
+#book-detail .reserve:hover{
+  background-color: #6b7a8f;
+}
+#book-detail h3{
+  padding-left: 20%;
+  margin-top: 5px;
+  margin-bottom:5px;
+}
+#book-detail .reserve h3{
+  font-weight: bold;
+  padding:0;
+}
+
+#book-detail hr {
+  width:60%;
+  border: 2px solid #f7882f;
 }

@@ -1,26 +1,28 @@
-<div class="container">
-    <h2>Book</h2>
-    <h3>Title: {{book.title}}</h3>
-    <h3>Author: {{book.author}}</h3>
-</div>
+<div id="book-detail" class="container">
+    <div class="details container">
+        <div >
+            <h3>Book: {{book.title}} by {{book.author}}</h3>
+            
+        </div>
+<hr>
+        <div >
+            <h3>Owner: {{book.owner.username}} </h3>
+            
+             <h3>Contact: {{book.owner.email}}  </h3>
+            
 
-<div class="container">
-    <h2>Owner </h2>
-    <h3>Username: {{book.owner.username}}</h3>
-    <h3>Email: {{book.owner.email}}</h3>
+        </div>
 
-</div>
-
-{{#unless owned}}
-<form method="POST" action="/book/{{book._id}}/reserve">
-    <div class="field submit">
-        <button>Reserve</button>
+        {{#unless owned}}
+        <form method="POST" action="/book/{{book._id}}/reserve" >
+            <div class="field submit">
+                <button class="reserve"><h3>Reserve</h3></button>
+            </div>
+        </form>
+        {{/unless }}
     </div>
-</form>
-{{/unless }}
-
-<div id="map"></div>
-
+    <div id="map"></div>
+</div>
 <script>
     window.addEventListener('load', () => {
         main('{{book._id}}');
