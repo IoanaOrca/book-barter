@@ -14,11 +14,17 @@ router.get('/addbook', (req, res, next) => {
 router.post('/addbook', (req, res, next) => {
   const title = req.body.title;
   const author = req.body.author;
+  const genre = req.body.genre;
+  const condition = req.body.condition;
+  const description = req.body.description;
   const owner = req.session.user._id;
 
   const book = new Book({
     title,
     author,
+    genre,
+    condition,
+    description,
     owner
   });
 
