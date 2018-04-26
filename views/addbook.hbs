@@ -2,6 +2,7 @@
 <div class="container">
     <h1>Add Book</h1>
     <form id="form" action="/book/addbook" method="POST">
+
         <div class="field">
             <label>Title</label>
             <input type="text" name="title" required placeholder="Title" />
@@ -10,6 +11,36 @@
         <div class="field">
             <label>Author</label>
             <input type="text" name="author" required placeholder="Author" />
+        </div>
+
+        <div class="field">
+            <label>Genre</label>
+            <input list="genre" required placeholder="Genre">
+            <datalist id="genre">
+                <option value="Science Fiction">
+                <option value="Drama">
+                <option value="Romance">
+                <option value="My Story">
+                <option value="Horror">
+                <option value="Novel">
+                <option value="Guide">
+            </datalist>
+        </div>
+        <div class="field">
+            <label>Condition</label>
+            <input list="condition" required placeholder="Condition">
+            <datalist id="condition">
+                <option value="As New">
+                <option value="Very Good">
+                <option value="Good">
+                <option value="Fair">
+                <option value="Poor">
+            </datalist>
+        </div>
+
+        <div class="field">
+            <label>Description</label>
+            <textarea type="textarea" rows="10" cols="55" name="decription"></textarea>
         </div>
         
         <div class="field submit">
