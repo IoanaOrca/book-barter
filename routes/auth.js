@@ -64,7 +64,10 @@ router.get('/login', (req, res, next) => {
 
 /* POST login page. */
 router.post('/login', (req, res, next) => {
-  const username = req.body.username;
+  function toTitleCase (str) {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  }
+  const username = toTitleCase(req.body.username);
   const password = req.body.password;
 
   // here check if user already exist

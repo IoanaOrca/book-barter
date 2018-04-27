@@ -56,6 +56,7 @@ app.use(cookieParser());
 app.use(flash());
 
 app.use((req, res, next) => {
+  app.locals.GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
   app.locals.user = req.session.user;
   next();
 });
