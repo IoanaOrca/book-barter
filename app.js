@@ -22,7 +22,7 @@ const app = express();
 
 // database connection
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/book-barter', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
 });
