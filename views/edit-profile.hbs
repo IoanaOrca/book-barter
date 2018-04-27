@@ -9,10 +9,10 @@
         <ul>
             {{#each mybooks}}
             <li>
-                <p>{{this.title}} by {{this.author}}</p>
+                <p class="book">{{this.title}} by {{this.author}}</p>
                 <form method="POST" action="/edit-profile/delete/{{this._id}}">
                     <div class="field submit">
-                        <button>Remove this Book</button>
+                        <button class="remove-book">Remove this Book</button>
                     </div>
                 </form>
             </li>
@@ -29,12 +29,13 @@
         <ul>
             {{#each reservedbooks}}
             <li>
-                <p>{{this.owner.email}}</p>
-                <p>{{this.title}}</p>
-                <p>{{this.author}}</p>
+                <div class="book">
+                    <p>{{this.owner.email}}</p>
+                    <p>{{this.title}} by  {{this.author}}</p>
+                </div>
                 <form method="POST" action="/edit-profile/unreserve/{{this._id}}">
                     <div class="field submit">
-                        <button>Unreserve</button>
+                        <button class="remove-book">Unreserve  this book</button>
                     </div>
                 </form>
             </li>

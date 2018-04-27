@@ -13,9 +13,6 @@ body {
   padding: 0;
   /* background-color: #dcc7aa; */
 }
-/* *{
-  border: 1px solid white;
-} */
 
 ul {
   list-style-type: none;
@@ -129,7 +126,6 @@ button {
 
 .site-header {
   background-color: #6b7a8f;
-  margin-bottom:20px;
 }
 
 #site-footer {
@@ -267,7 +263,7 @@ body#not-found {
 }
 
 .not-found {
-  padding-top:30vh;
+  padding-top:10vh;
   margin-bottom: 30px;
 }
 
@@ -391,12 +387,13 @@ body#signup {
 }
 
 .status {
-  padding:5px 10px;
+  padding:5px 20px;
   color:white;
   background-color: #f7882f;
   border-radius:5px;
-  font-weight: bold;
   border-color:#f7882f;
+  transition: .3s ease background;
+  font-size: 14px;
 }
 
 .status:hover {
@@ -475,10 +472,15 @@ body#signup {
   padding: 5px 10px;
   background-color:#f7882f;
   border-radius: 5px;
+  transition: .3s ease background;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: 1px solid #f7882f;
 }
 
 #books a:hover {
-  background-color: #6b7a8f;
+  background: #fff;
+  color: #f7882f;
 }
 
 #books h3 {
@@ -503,6 +505,13 @@ body#signup {
   border-radius:10px;
   color:#808080;
 }
+#book-detail h3{
+  font-weight: bold;
+  padding-left: 10%;
+  margin-top: 5px;
+  margin-bottom:5px;
+  color:white;
+}
 
 #book-detail .reserve {
   color:white;
@@ -513,21 +522,21 @@ body#signup {
   border-radius: 5px;
   margin-right:20px;
   margin-bottom:20px;
+  transition: .3s ease background;
+  font-size: 14px;
+  padding: 5px 20px;
+  border: 1px solid #f7882f;
 }
 
 #book-detail .reserve:hover {
-  background-color: #6b7a8f;
+  background: #fff;
+  color: #f7882f;
 }
 
-#book-detail h3{
-  font-weight: bold;
-  padding-left: 20%;
-  margin-top: 5px;
-  margin-bottom:5px;
-}
+
 
 #book-detail .details p{
-  padding-left: 20%;
+  padding-left: 10%;
 }
 
 #book-detail .reserve h3{
@@ -539,13 +548,18 @@ body#signup {
 
 /* ---- edit profile ---- */
 
-edit-profile {
+#edit-profile {
   display: flex;
   justify-content: center;
+  background-image: url('/images/edit-profile.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top:10%;
+  padding-bottom:10%;
 }
 
 .edit-profile {
-  min-width: 380px;
+  width: 60%;
   display:inline-block;
   background-color: #dcc7aa;
   padding: 0 20px;
@@ -557,10 +571,11 @@ edit-profile {
 .edit-profile h3 {
   text-align: center;
   font-weight:bold;
+  color:white;
 }
 
 .edit-profile p {
-  padding-left: 40px;
+  padding-left: 10%;
   margin-bottom:5px;
 }
 
@@ -576,13 +591,16 @@ edit-profile {
   display: block;
   background-color:#f7882f;
   border-radius: 5px;
-  margin-right:20%;
+  margin-right:10%;
   margin-bottom:20px;
   padding:5px 10px;
+  font-size: 14px;
+  transition: .3s ease background;
 }
 
 .edit-profile button:hover {
-background-color: #6b7a8f;
+background-color: #fff;
+color:#f7882f;
 }
 
 .add-book button {
@@ -593,13 +611,28 @@ background-color: #6b7a8f;
   margin-bottom:20px;
   padding:5px 10px;
   color:white;
+  font-size: 14px;
+  transition: .3s ease background;
 }
-
+.edit-profile li {
+  display: flex;
+}
+.edit-profile .book{
+  flex: 2 0 auto;
+}
+.edit-profile .remove-book{
+  flex: 1 0 auto;
+}
 /* ---- add book ---- */
 
 #add-book {
   display: flex;
   justify-content: center;
+  display: flex;
+  justify-content: center;
+  background-image: url('/images/add-book.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #add-book .form {
