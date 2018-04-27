@@ -3,21 +3,16 @@
 <form id="form" action="/auth/signup" method="POST">
 
     <div class="field">
-        {{!-- <label>Email</label> --}}
-        <input type="text" name="email" placeholder="Email" />
-    </div>
-
-    <div class="field">
-        {{!-- <label>Username</label> --}}
         <input type="text" name="username" required placeholder="Username" />
     </div>
 
     <div class="field">
-        {{!-- <label>Password</label> --}}
         <input id="myPassword" type="password" name="password" required placeholder="Password" />
     </div>
 
-    
+      <div class="field">
+        <input type="text" name="email" placeholder="Email" />
+    </div>
 
     <div class="field submit">
         <button type="submit">Signup</button>
