@@ -5,7 +5,7 @@ function main (id) {
     const coords = response.data.book.location.coordinates;
     const location = { lat: coords[0], lng: coords[1] };
     const container = document.getElementById('map');
-    const options = { zoom: 10, center: location };
+    const options = { zoom: 15, center: location };
     const map = new google.maps.Map(container, options);
     addMarker(map, location, 'book');
   });
