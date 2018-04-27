@@ -32,7 +32,7 @@
                 <div class="book">
                     <p>{{this.owner.email}}</p>
                     <p>{{this.title}} by  {{this.author}}</p>
-                    <a href="/book/{{this._id}}">See details</a>
+                    <a href="/book/{{this._id}}" class="add-book"><button>See details</button></a>
                 </div>
                 <form method="POST" action="/edit-profile/unreserve/{{this._id}}">
                     <div class="field submit">

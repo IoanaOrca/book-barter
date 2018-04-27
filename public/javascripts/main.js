@@ -42,19 +42,25 @@ function searchLoaded (id) {
 
     axios.post('/api/book', body)
       .then(res => {
-        for (let ix = 0; ix < res.data.book.length; ix++) {
-          let newCharacterHtml = `
+        if (res.data.book.length === 0) {
+          let newCharacterHtml = `<li>
+          <p>There are no books that matches your search!</p></li>`;
+          document.getElementById('books').innerHTML += newCharacterHtml;
+        } else {
+          for (let ix = 0; ix < res.data.book.length; ix++) {
+            let newCharacterHtml = `
           <li>
             <p>Book: ${res.data.book[ix].title} | ${res.data.book[ix].author} </p>
             <p>Owner: ${res.data.book[ix].owner.username}</p>`;
 
-          if (id) {
-            newCharacterHtml += `<a href="/book/${res.data.book[ix]._id}"> Details </a>`;
-          } else {
-            newCharacterHtml += `<a href="/auth/login"> Details </a>`;
-          }
+            if (id) {
+              newCharacterHtml += `<a href="/book/${res.data.book[ix]._id}"> Details </a>`;
+            } else {
+              newCharacterHtml += `<a href="/auth/login"> Details </a>`;
+            }
 
-          document.getElementById('books').innerHTML += newCharacterHtml;
+            document.getElementById('books').innerHTML += newCharacterHtml;
+          }
         }
       });
   }

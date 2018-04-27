@@ -21,8 +21,12 @@ router.get('/signup', (req, res, next) => {
 
 /* Post signup page. */
 router.post('/signup', (req, res, next) => {
+  // capitalize every letter
+  function toTitleCase (str) {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  }
   const email = req.body.email;
-  const username = req.body.username;
+  const username = toTitleCase(req.body.username);
   const password = req.body.password;
 
   // here check if user already exist

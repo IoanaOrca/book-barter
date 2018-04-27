@@ -14,8 +14,12 @@ router.get('/addbook', (req, res, next) => {
 
 /* Post book page. */
 router.post('/addbook', (req, res, next) => {
-  const title = req.body.title;
-  const author = req.body.author;
+  // capitalize every letter
+  function toTitleCase (str) {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  }
+  const title = toTitleCase(req.body.title);
+  const author = toTitleCase(req.body.author);
   const genre = req.body.genre;
   const condition = req.body.condition;
   const description = req.body.description;

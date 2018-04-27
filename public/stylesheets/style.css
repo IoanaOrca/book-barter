@@ -613,9 +613,11 @@ color:#f7882f;
   color:white;
   font-size: 14px;
   transition: .3s ease background;
+  margin-top: 20px;
 }
 .edit-profile li {
   display: flex;
+  margin-bottom:20px;
 }
 .edit-profile .book{
   flex: 2 0 auto;
