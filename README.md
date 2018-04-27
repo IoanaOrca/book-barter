@@ -2,29 +2,36 @@
 
 ### Made by Jordi Calzada & Ioana Orca @Ironhack
 
-## **It's a** brain training game. Learn new words and expand your vocabulary.
 
-**Game play:** The user can tap the matching word to keep the baloon floating.
+## **It's a** full stack app where you can swap bookand connect with people with the same interests.
 
-**Features:** The user wins 400 points if guessing the synonym in under 5 seconds and pumps the air baloon up.
+**User can:** 
+- Search books that other people have to share,
+- SignUp and Login to the platform,
+- Reserve the book of their dreams,
+- Add a book to the sharing community.
+
+**Features:** 
+- Location of the book on Google maps
 
 **Chalenges:**
 
-- media queries
-- structure canvas on top of html
-- bulding the game logic
+- Filter without refreshing the page
+- Finding the personal strong points and building on top
+- Working with databases and api
 
 **Lessons learned:**
 
-- how to debug | no console.log
-- dealing with time intervals
+- Git and Github flow
+- Team workflow and sharing knowledge
+- Architecture of a full stack app
 
-If I were to start from scratch I would spend more time building game architecture.
+If we were to start from scratch I would spend more time building game architecture.
 
-**I would really like to improove:**
+**We would really like to improove:**
 
-- design and CSS
-- add sounds and animations
+- Filter search by proximity
+- Add a leave reviews option
+- Create a chat between users
 
-[Play the game!](https://ioanaorca.github.io/FloatGame/)
-
+[Play the game!](https://book-barter-fullstack.herokuapp.com/)
