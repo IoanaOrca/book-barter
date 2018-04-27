@@ -33,7 +33,10 @@ router.get('/book/:bookId', (req, res, next) => {
 
 /* POST book page. */
 router.post('/book', (req, res, next) => {
-  const title = req.body.title;
+  function toTitleCase (str) {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+  }
+  const title = toTitleCase(req.body.title);
   const query = {
     $and: [
       { title: title },
